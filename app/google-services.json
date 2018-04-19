@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "833926236797",
+    "firebase_url": "https://leslogin-4ed36.firebaseio.com",
+    "project_id": "leslogin-4ed36",
+    "storage_bucket": "leslogin-4ed36.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:833926236797:android:f26303c6aa149dd9",
+        "android_client_info": {
+          "package_name": "com.les.app.les_login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "833926236797-k70rtntf5756cgsfs69fk0eig984g5eg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.les.app.les_login",
+            "certificate_hash": "ace7e7a210260e51bdb6811969fd6a22bd41a36e"
+          }
+        },
+        {
+          "client_id": "833926236797-i87ala5m80t6r9pvpu8g560fphr4d2th.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxJqlrJACDpegoYb6mU5iOPqfyC5IRvLw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "833926236797-i87ala5m80t6r9pvpu8g560fphr4d2th.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
