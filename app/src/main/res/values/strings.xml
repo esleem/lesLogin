@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">LES_LOGIN</string>
+
+
+    <!-- Facebook login -->
+    <string name="facebook_app_id">181003229378526</string>
+    <string name="fb_login_protocol_scheme">fb181003229378526</string>
+
+    <!-- Google Id Token -->
+
+
 </resources>
