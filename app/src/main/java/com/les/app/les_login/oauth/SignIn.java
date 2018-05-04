@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import com.les.app.les_login.base.listener.SelectListItemListener;
 import com.les.app.les_login.utils.CommonUtils;
 
 public abstract class SignIn {
@@ -47,7 +48,7 @@ public abstract class SignIn {
 
     public abstract void onActivityResult(int requestCode, int resultCode, Intent data);
     public abstract void signIn();
-    public abstract void logout();
+    public abstract void logout(SelectListItemListener itemListener);
 
 
     //--------------------------------------------------

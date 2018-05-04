@@ -18,6 +18,7 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.les.app.les_login.R;
+import com.les.app.les_login.base.listener.SelectListItemListener;
 import com.les.app.les_login.utils.CommonUtils;
 
 public class SignInGoogle extends SignIn{
@@ -78,7 +79,7 @@ public class SignInGoogle extends SignIn{
     }
 
     @Override
-    public void logout() {
+    public void logout(final SelectListItemListener itemListener) {
 
         mGoogleApiClient.connect();
         mGoogleApiClient.registerConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
@@ -96,7 +97,8 @@ public class SignInGoogle extends SignIn{
                             if (status.isSuccess()){
 
                                 setSelectedOauth(AuthDefine.AUTH_TYPE.NO_SIGNUP);
-                                mLoginCallBack.onLoginResult(AuthDefine.LOGIN_CALLBACK_STATUS.LOGOUT);
+                                itemListener.onSelectItem("LOGOUT");
+
                             }
 
                         }

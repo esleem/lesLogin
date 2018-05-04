@@ -3,6 +3,8 @@ package com.les.app.les_login.oauth;
 import android.content.Context;
 import android.content.Intent;
 
+import com.les.app.les_login.base.listener.SelectListItemListener;
+
 public class SignInWeChat extends SignIn{
 
     protected SignInWeChat(Context context, AuthDefine.LoginCallBack loginCallBack) {
@@ -10,7 +12,7 @@ public class SignInWeChat extends SignIn{
     }
 
     @Override
-    public void logout() {
+    public void logout(SelectListItemListener itemListener) {
 
     }
 

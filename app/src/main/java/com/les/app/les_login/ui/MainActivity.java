@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.les.app.les_login.R;
+import com.les.app.les_login.base.listener.SelectListItemListener;
 import com.les.app.les_login.oauth.AuthDefine;
 import com.les.app.les_login.oauth.SignIn;
 import com.les.app.les_login.utils.CommonUtils;
@@ -30,18 +31,19 @@ public class MainActivity extends AppCompatActivity {
 
                 AuthDefine.AUTH_TYPE selAuthType = SignIn.getSelectedSignIn(MainActivity.this);
 
-                SignIn signIn = SignIn.getSignInstance(selAuthType, MainActivity.this, new AuthDefine.LoginCallBack() {
+
+                SignIn signIn = SignIn.getSignInstance(selAuthType, MainActivity.this, null);
+                signIn.logout(new SelectListItemListener(){
                     @Override
-                    public void onLoginResult(AuthDefine.LOGIN_CALLBACK_STATUS var1) {
+                    public void onSelectItem(String position) {
+                        if ("LOGOUT".equals(position)) finish();
+                    }
 
-                        if (AuthDefine.LOGIN_CALLBACK_STATUS.LOGOUT.equals(var1)){
-
-                            finish();
-                        }
+                    @Override
+                    public void onSelectItem(int position) {
 
                     }
                 });
-                signIn.logout();
 
             }
         });
