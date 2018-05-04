@@ -36,7 +36,10 @@ public class MainActivity extends AppCompatActivity {
                 mSignin.logout(new SelectListItemListener(){
                     @Override
                     public void onSelectItem(String position) {
-                        if ("LOGOUT".equals(position)) finish();
+                        if ("LOGOUT".equals(position)) {
+
+                            finish();
+                        }
                     }
 
                     @Override

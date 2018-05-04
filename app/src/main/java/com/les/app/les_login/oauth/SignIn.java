@@ -39,6 +39,11 @@ public abstract class SignIn {
 
                 mSignin = new SignInWeChat(context, loginCallBack);
                 break;
+
+            case NO_SIGNUP:
+
+                mSignin = null;
+                break;
         }
 
         return mSignin;
@@ -58,9 +63,10 @@ public abstract class SignIn {
 
         SharedPreferences settings = context.getSharedPreferences(PREFS_NAME, 0);
         String selectedOauthStr = settings.getString(SETTINGS_SELECTED_OAUTH, AuthDefine.AUTH_TYPE.NO_SIGNUP.toString());
-
         AuthDefine.AUTH_TYPE selectedOauth = AuthDefine.AUTH_TYPE.valueOf(selectedOauthStr.toUpperCase());
-        CommonUtils.log("getSelectedSignIn() mSelectedOauth="+selectedOauth);
+
+        CommonUtils.log("getSelectedSignIn() mSelectedOauth = " + selectedOauth);
+
         return selectedOauth;
     }
 

@@ -142,11 +142,12 @@ public class SignInGoogle extends SignIn{
     @Override
     public String getToken() {
 
-        if(mAccount != null) {
-            return mAccount.getIdToken();
-        }
+        String token = "";
+        if(mAccount != null) token = mAccount.getIdToken();
 
-        return "";
+        CommonUtils.log("Google - getToken() : " + token);
+
+        return token;
     }
 
     private void handleSignInResult(GoogleSignInResult result){
