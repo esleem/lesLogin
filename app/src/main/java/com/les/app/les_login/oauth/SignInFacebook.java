@@ -63,6 +63,20 @@ public class SignInFacebook extends SignIn{
     }
 
     @Override
+    public void signIn() {
+
+        CommonUtils.log("Facebook - signIn()");
+        loginManager.logInWithReadPermissions((Activity) mContext, Arrays.asList("public_profile", "email", "user_birthday"));
+
+    }
+
+    @Override
+    public void silentLogin() {
+
+        CommonUtils.log("Facebook - silentLogin()");
+    }
+
+    @Override
     public void logout(SelectListItemListener itemListener) {
 
         CommonUtils.log("Facebook - logout()");
@@ -76,10 +90,8 @@ public class SignInFacebook extends SignIn{
     }
 
     @Override
-    public void signIn() {
-
-        CommonUtils.log("Facebook - signIn()");
-        loginManager.logInWithReadPermissions((Activity) mContext, Arrays.asList("public_profile", "email", "user_birthday"));
-
+    public String getToken() {
+        return null;
     }
+
 }

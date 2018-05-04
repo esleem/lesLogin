@@ -12,6 +12,16 @@ public class SignInWeChat extends SignIn{
     }
 
     @Override
+    public void signIn() {
+
+    }
+
+    @Override
+    public void silentLogin() {
+
+    }
+
+    @Override
     public void logout(SelectListItemListener itemListener) {
 
     }
@@ -22,7 +32,7 @@ public class SignInWeChat extends SignIn{
     }
 
     @Override
-    public void signIn() {
-
+    public String getToken() {
+        return null;
     }
 }

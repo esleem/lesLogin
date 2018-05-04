@@ -45,8 +45,10 @@ public abstract class SignIn {
     }
 
     public abstract void onActivityResult(int requestCode, int resultCode, Intent data);
+    public abstract void silentLogin();
     public abstract void signIn();
     public abstract void logout(SelectListItemListener itemListener);
+    public abstract String getToken();
 
 
     //--------------------------------------------------

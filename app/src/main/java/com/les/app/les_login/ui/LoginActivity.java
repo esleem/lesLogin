@@ -83,6 +83,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //--------------------
+        // 자동로그인
+        //--------------------
+        mSignin = SignIn.getSignInstance(SignIn.getSelectedSignIn(LoginActivity.this),this , mLoginCallBack);
+        if (mSignin != null) mSignin.silentLogin();
+
     }
 
     @Override
@@ -95,7 +101,9 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
+    //--------------------------------------------------
+    // 소셜 로그인 콜백리스너
+    //--------------------------------------------------
     public AuthDefine.LoginCallBack mLoginCallBack = new AuthDefine.LoginCallBack() {
         @Override
         public void onLoginResult(AuthDefine.LOGIN_CALLBACK_STATUS var1) {

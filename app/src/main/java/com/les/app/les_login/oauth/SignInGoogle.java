@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,7 +27,6 @@ public class SignInGoogle extends SignIn{
     private Context mContext;
     private GoogleSignInOptions gso;
     private GoogleApiClient mGoogleApiClient;
-    private GoogleSignInResult mSignInResult;        // 로그인 결과
 
     private boolean isSilentSignIn;                  // 자동로그인 여부
     private GoogleSignInAccount mAccount;            // 로그인 계정
@@ -59,23 +59,34 @@ public class SignInGoogle extends SignIn{
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        CommonUtils.log("Google - onActivityResult()");
-        if (requestCode == GOOGLE_LOGIN_RQ) {
-
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            if (result != null) handleSignInResult(result);
-        }
-
-    }
-
-    @Override
     public void signIn() {
 
         CommonUtils.log("Google - signIn()");
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         ((Activity)mContext).startActivityForResult(signInIntent, GOOGLE_LOGIN_RQ);
+    }
+
+    @Override
+    public void silentLogin() {
+
+        CommonUtils.log("Google - silentLogin()");
+
+        isSilentSignIn = true;
+        OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient);
+
+        if (opr.isDone()) {
+            GoogleSignInResult result = opr.get();
+            handleSignInResult(result);
+        } else {
+
+            opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
+                @Override
+                public void onResult(GoogleSignInResult googleSignInResult) {
+
+                    handleSignInResult(googleSignInResult);
+                }
+            });
+        }
 
     }
 
@@ -117,11 +128,30 @@ public class SignInGoogle extends SignIn{
 
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        CommonUtils.log("Google - onActivityResult()");
+        if (requestCode == GOOGLE_LOGIN_RQ) {
+
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            if (result != null) handleSignInResult(result);
+        }
+    }
+
+    @Override
+    public String getToken() {
+
+        if(mAccount != null) {
+            return mAccount.getIdToken();
+        }
+
+        return "";
+    }
+
     private void handleSignInResult(GoogleSignInResult result){
 
         CommonUtils.log("Google - handleSignInResult() isSuccess " + result.isSuccess());
-
-        mSignInResult = result;
 
         if (result.isSuccess()){
 
