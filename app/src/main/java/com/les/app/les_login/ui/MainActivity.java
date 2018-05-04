@@ -11,6 +11,8 @@ import com.les.app.les_login.oauth.AuthDefine;
 import com.les.app.les_login.oauth.SignIn;
 import com.les.app.les_login.utils.CommonUtils;
 
+import static com.les.app.les_login.oauth.SignIn.mSignin;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView tv_userName;
@@ -31,9 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
                 AuthDefine.AUTH_TYPE selAuthType = SignIn.getSelectedSignIn(MainActivity.this);
 
-
-                SignIn signIn = SignIn.getSignInstance(selAuthType, MainActivity.this, null);
-                signIn.logout(new SelectListItemListener(){
+                mSignin.logout(new SelectListItemListener(){
                     @Override
                     public void onSelectItem(String position) {
                         if ("LOGOUT".equals(position)) finish();
@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-
             }
         });
 

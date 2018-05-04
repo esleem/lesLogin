@@ -11,7 +11,7 @@ import com.les.app.les_login.utils.CommonUtils;
 public abstract class SignIn {
 
     protected SharedPreferences mSettings;
-    static private SignIn mSignin;
+    public static SignIn mSignin;
 
     protected static final String SETTINGS_SELECTED_OAUTH = "selected_oauth";
     private static final String PREFS_NAME = "oauth_kokoa";
@@ -22,8 +22,6 @@ public abstract class SignIn {
     }
 
     public static SignIn getSignInstance(AuthDefine.AUTH_TYPE authType, Context context, AuthDefine.LoginCallBack loginCallBack){
-
-        if (mSignin != null) return mSignin;
 
         switch (authType){
 

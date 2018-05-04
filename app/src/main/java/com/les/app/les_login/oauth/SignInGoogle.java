@@ -36,7 +36,6 @@ public class SignInGoogle extends SignIn{
     private final static int GOOGLE_LOGIN_RQ = 9001;
 
     public SignInGoogle(Context context, AuthDefine.LoginCallBack loginCallBack){
-
         super(context);
 
         mContext = context;
@@ -62,6 +61,7 @@ public class SignInGoogle extends SignIn{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        CommonUtils.log("Google - onActivityResult()");
         if (requestCode == GOOGLE_LOGIN_RQ) {
 
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
@@ -73,6 +73,7 @@ public class SignInGoogle extends SignIn{
     @Override
     public void signIn() {
 
+        CommonUtils.log("Google - signIn()");
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         ((Activity)mContext).startActivityForResult(signInIntent, GOOGLE_LOGIN_RQ);
 
@@ -80,6 +81,8 @@ public class SignInGoogle extends SignIn{
 
     @Override
     public void logout(final SelectListItemListener itemListener) {
+
+        CommonUtils.log("Google - logout()");
 
         mGoogleApiClient.connect();
         mGoogleApiClient.registerConnectionCallbacks(new GoogleApiClient.ConnectionCallbacks() {
@@ -116,13 +119,11 @@ public class SignInGoogle extends SignIn{
 
     private void handleSignInResult(GoogleSignInResult result){
 
-        CommonUtils.log(" handleSignInResult ");
+        CommonUtils.log("Google - handleSignInResult() isSuccess " + result.isSuccess());
 
         mSignInResult = result;
 
         if (result.isSuccess()){
-
-            CommonUtils.log(" result : Success ");
 
             mAccount = result.getSignInAccount();
 
@@ -133,8 +134,6 @@ public class SignInGoogle extends SignIn{
             mLoginCallBack.onLoginResult(AuthDefine.LOGIN_CALLBACK_STATUS.LOGIN_SUCCESS);
 
         }else {
-
-            CommonUtils.log(" result : Fail ");
 
             if(isSilentSignIn && (result.getStatus().getStatusCode() != 12501)) {
 

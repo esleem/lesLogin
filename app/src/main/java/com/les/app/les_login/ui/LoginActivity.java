@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.les.app.les_login.R;
 import com.les.app.les_login.oauth.AuthDefine;
 import com.les.app.les_login.oauth.SignIn;
@@ -66,6 +65,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                mSignin = SignIn.getSignInstance(AuthDefine.AUTH_TYPE.FACEBOOK, LoginActivity.this, mLoginCallBack);
+                mSignin.signIn();
             }
         });
 
@@ -77,6 +78,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                mSignin = SignIn.getSignInstance(AuthDefine.AUTH_TYPE.WECHAT, LoginActivity.this, mLoginCallBack);
+                mSignin.signIn();
             }
         });
 
