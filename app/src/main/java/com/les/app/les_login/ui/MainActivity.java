@@ -7,9 +7,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import com.les.app.les_login.R;
 import com.les.app.les_login.base.listener.SelectListItemListener;
-import com.les.app.les_login.oauth.AuthDefine;
-import com.les.app.les_login.oauth.SignIn;
-import com.les.app.les_login.utils.CommonUtils;
 
 import static com.les.app.les_login.oauth.SignIn.mSignin;
 
@@ -54,5 +51,12 @@ public class MainActivity extends AppCompatActivity {
         tv_userName = (TextView) findViewById(R.id.tv_userName);
         tv_userName.setText(mSignin.getUserName());
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        mSignin.onDestroy();
     }
 }

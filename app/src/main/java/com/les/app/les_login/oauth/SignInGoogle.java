@@ -158,6 +158,15 @@ public class SignInGoogle extends SignIn{
         return nickName;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        CommonUtils.log("Google - onDestroy()");
+
+        mGoogleApiClient.stopAutoManage((FragmentActivity) mContext);
+    }
+
     private void handleSignInResult(GoogleSignInResult result){
 
         CommonUtils.log("Google - handleSignInResult() isSuccess " + result.isSuccess());

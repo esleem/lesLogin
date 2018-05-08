@@ -9,7 +9,6 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
@@ -20,7 +19,6 @@ import com.les.app.les_login.base.listener.SelectListItemListener;
 import com.les.app.les_login.utils.CommonUtils;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 public class SignInFacebook extends SignIn{
 
@@ -159,5 +157,13 @@ public class SignInFacebook extends SignIn{
         if (profile != null) nickName = profile.getName();
         CommonUtils.log("Facebook - getUserName : " + nickName);
         return nickName;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        CommonUtils.log("Facebook - onDestroy()");
+        LoginManager.getInstance().unregisterCallback(callbackManager);
     }
 }

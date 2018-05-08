@@ -22,9 +22,6 @@ import com.kakao.util.exception.KakaoException;
 import com.les.app.les_login.base.listener.SelectListItemListener;
 import com.les.app.les_login.utils.CommonUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SignInKakao extends  SignIn{
 
     private Context mContext;
@@ -101,6 +98,13 @@ public class SignInKakao extends  SignIn{
         return nickName;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        CommonUtils.log("Kakao - onDestroy()");
+        Session.getCurrentSession().removeCallback(mSessionCallback);
+    }
 
     //--------------------------------------------------
     //

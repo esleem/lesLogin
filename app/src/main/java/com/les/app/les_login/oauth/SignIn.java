@@ -60,7 +60,7 @@ public abstract class SignIn {
     public abstract void logout(SelectListItemListener itemListener);
     public abstract String getUserName();
     public abstract String getToken();
-
+    public void onDestroy(){}
 
     //--------------------------------------------------
     // 소셜로그인 타입 가져오기
