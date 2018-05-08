@@ -38,6 +38,11 @@ dependencies {
     //--------------------
     implementation 'com.facebook.android:facebook-login:[4,5)'
 
+    //--------------------
+    // Kakao login
+    //--------------------
+    implementation group: 'com.kakao.sdk', name: 'usermgmt', version: project.KAKAO_SDK_VERSION
+
 
 }
 

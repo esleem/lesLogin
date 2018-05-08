@@ -8,5 +8,8 @@
 
     <!-- Google Id Token -->
 
+    <!-- Kakao login -->
+    <string name="kakao_key">79ca3be48dd0ef2a3cd3d9b72f95341b</string>
+
 
 </resources>
