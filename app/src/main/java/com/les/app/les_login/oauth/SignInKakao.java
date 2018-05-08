@@ -59,16 +59,7 @@ public class SignInKakao extends  SignIn{
     public void silentLogin() {
 
         CommonUtils.log("Kakao - silentLogin()");
-        if (Session.getCurrentSession().isOpened()) {
-
-            mLoginCallBack.onLoginResult(AuthDefine.LOGIN_CALLBACK_STATUS.LOGIN_SUCCESS);
-            setSelectedOauth(AuthDefine.AUTH_TYPE.KAKAO);
-
-        }else {
-
-            mLoginCallBack.onLoginResult(AuthDefine.LOGIN_CALLBACK_STATUS.TOKEN_EXPIRED);
-            setSelectedOauth(AuthDefine.AUTH_TYPE.NO_SIGNUP);
-        }
+        Session.getCurrentSession().checkAndImplicitOpen();
     }
 
     @Override

@@ -155,7 +155,8 @@ public class SignInFacebook extends SignIn{
 
         Profile profile = Profile.getCurrentProfile();
 
-        String nickName = profile.getName();
+        String nickName = "";
+        if (profile != null) nickName = profile.getName();
         CommonUtils.log("Facebook - getUserName : " + nickName);
         return nickName;
     }

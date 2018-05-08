@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         // 유저 정보 출력
         //--------------------
         tv_userName = (TextView) findViewById(R.id.tv_userName);
-        tv_userName.setText("");
+        tv_userName.setText(mSignin.getUserName());
 
     }
 }
