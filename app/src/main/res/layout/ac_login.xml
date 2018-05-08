@@ -33,6 +33,12 @@
             android:layout_height="wrap_content"
             android:text="WeChat" />
 
+        <Button
+            android:id="@+id/btn_login_D"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kakao" />
+
     </LinearLayout>
 
 </LinearLayout>

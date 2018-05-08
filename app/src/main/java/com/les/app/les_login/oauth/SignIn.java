@@ -40,6 +40,11 @@ public abstract class SignIn {
                 mSignin = new SignInWeChat(context, loginCallBack);
                 break;
 
+            case KAKAO:
+
+                mSignin = new SignInKakao(context, loginCallBack);
+                break;
+
             case NO_SIGNUP:
 
                 mSignin = null;

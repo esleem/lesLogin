@@ -28,6 +28,7 @@ public class AuthDefine {
         GOOGLE("GOOGLE"),
         FACEBOOK("FACEBOOK"),
         WECHAT("GOOWECHATGLE"),
+        KAKAO("KAKAO"),
         NO_SIGNUP("NO_SIGNUP");
 
         AUTH_TYPE(String authType){ }

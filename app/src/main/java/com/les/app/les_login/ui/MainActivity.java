@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                AuthDefine.AUTH_TYPE selAuthType = SignIn.getSelectedSignIn(MainActivity.this);
-
                 mSignin.logout(new SelectListItemListener(){
                     @Override
                     public void onSelectItem(String position) {

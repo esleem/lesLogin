@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btn_login_A;             // 구글 로그인
     private Button btn_login_B;             // 페북 로그인
     private Button btn_login_C;             // 위쳇 로그인
+    private Button btn_login_D;             // 카톡 로그인
 
     //--------------------
     //
@@ -84,10 +85,28 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         //--------------------
+        // 로그인 - 위챗
+        //--------------------
+        btn_login_D= (Button) findViewById(R.id.btn_login_D);
+        btn_login_D.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                mSignin = SignIn.getSignInstance(AuthDefine.AUTH_TYPE.KAKAO, LoginActivity.this, mLoginCallBack);
+                mSignin.signIn();
+            }
+        });
+
+        //--------------------
         // 자동로그인
         //--------------------
         mSignin = SignIn.getSignInstance(SignIn.getSelectedSignIn(LoginActivity.this),this , mLoginCallBack);
-        if (mSignin != null) mSignin.silentLogin();
+        if (mSignin != null) {
+            mSignin.silentLogin();
+            CommonUtils.log("@# NOT NULL");
+        }else {
+            CommonUtils.log("@# NULL");
+        }
 
     }
 
@@ -98,7 +117,6 @@ public class LoginActivity extends AppCompatActivity {
         if (mSignin != null){
             mSignin.onActivityResult(requestCode, resultCode, data);
         }
-
     }
 
     //--------------------------------------------------
@@ -114,9 +132,7 @@ public class LoginActivity extends AppCompatActivity {
                 intent.setClass(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
-
             }
-
         }
     };
 
