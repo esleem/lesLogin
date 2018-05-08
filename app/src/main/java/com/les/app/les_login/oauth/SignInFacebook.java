@@ -150,4 +150,13 @@ public class SignInFacebook extends SignIn{
         return token;
     }
 
+    @Override
+    public String getUserName() {
+
+        Profile profile = Profile.getCurrentProfile();
+
+        String nickName = profile.getName();
+        CommonUtils.log("Facebook - getUserName : " + nickName);
+        return nickName;
+    }
 }

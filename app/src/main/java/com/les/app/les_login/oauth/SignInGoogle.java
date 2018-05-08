@@ -150,6 +150,14 @@ public class SignInGoogle extends SignIn{
         return token;
     }
 
+    @Override
+    public String getUserName() {
+
+        String nickName = mAccount.getDisplayName();
+        CommonUtils.log("Google - getUserName : " + nickName);
+        return nickName;
+    }
+
     private void handleSignInResult(GoogleSignInResult result){
 
         CommonUtils.log("Google - handleSignInResult() isSuccess " + result.isSuccess());

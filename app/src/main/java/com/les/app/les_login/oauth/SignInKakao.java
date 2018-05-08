@@ -59,8 +59,7 @@ public class SignInKakao extends  SignIn{
     public void silentLogin() {
 
         CommonUtils.log("Kakao - silentLogin()");
-
-        if(Session.getCurrentSession().checkAndImplicitOpen()){
+        if (Session.getCurrentSession().isOpened()) {
 
             mLoginCallBack.onLoginResult(AuthDefine.LOGIN_CALLBACK_STATUS.LOGIN_SUCCESS);
             setSelectedOauth(AuthDefine.AUTH_TYPE.KAKAO);
@@ -70,7 +69,6 @@ public class SignInKakao extends  SignIn{
             mLoginCallBack.onLoginResult(AuthDefine.LOGIN_CALLBACK_STATUS.TOKEN_EXPIRED);
             setSelectedOauth(AuthDefine.AUTH_TYPE.NO_SIGNUP);
         }
-
     }
 
     @Override
@@ -98,9 +96,24 @@ public class SignInKakao extends  SignIn{
 
     @Override
     public String getToken() {
-        return null;
+
+        CommonUtils.log("Kakao - getToken() : " + Session.getCurrentSession().getTokenInfo().getAccessToken());
+        return Session.getCurrentSession().getTokenInfo().getAccessToken();
     }
 
+    @Override
+    public String getUserName() {
+
+        String nickName = UserProfile.loadFromCache().getNickname();
+        CommonUtils.log("Kakao - getUserName() : " + nickName);
+
+        return nickName;
+    }
+
+
+    //--------------------------------------------------
+    //
+    //--------------------------------------------------
     private void requestMe(){
 
         UserManagement.getInstance().requestMe(new MeResponseCallback() {

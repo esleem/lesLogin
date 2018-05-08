@@ -35,4 +35,9 @@ public class SignInWeChat extends SignIn{
     public String getToken() {
         return null;
     }
+
+    @Override
+    public String getUserName() {
+        return null;
+    }
 }

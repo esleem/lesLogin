@@ -58,6 +58,7 @@ public abstract class SignIn {
     public abstract void silentLogin();
     public abstract void signIn();
     public abstract void logout(SelectListItemListener itemListener);
+    public abstract String getUserName();
     public abstract String getToken();
 
 
