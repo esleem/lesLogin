@@ -21,6 +21,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.ac_main);
 
         //--------------------
+        // 기본 셋팅
+        //--------------------
+        defaultSetting();
+
+        //--------------------
+        // Rx Android
+        //--------------------
+
+    }
+
+
+    //--------------------------------------------------
+    // 기본 셋팅
+    //--------------------------------------------------
+    private void defaultSetting(){
+
+        //--------------------
         // 로그아웃
         //--------------------
         btn_logout = (Button) findViewById(R.id.btn_logout);
