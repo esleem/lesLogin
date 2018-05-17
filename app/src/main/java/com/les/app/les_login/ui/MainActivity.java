@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 if ("".equals(conso)) conso = "0";
                 int a = Integer.parseInt(conso);
                 sum += a;
+
             }
 
             CommonUtils.log("@# sum : " + sum);
