@@ -11,6 +11,8 @@ import com.les.app.les_login.base.listener.SelectListItemListener;
 import com.les.app.les_login.databinding.AcMainBinding;
 import com.les.app.les_login.model.UserModel;
 import com.les.app.les_login.utils.CommonUtils;
+import com.les.app.myfirstlibrary.LoadingDialog;
+import com.les.app.mysecondlibrary.SecondUtils;
 
 import java.util.Locale;
 
@@ -117,6 +119,9 @@ public class MainActivity extends AppCompatActivity {
         String phone = PhoneNumberUtils.formatNumber(oPhone, Locale.getDefault().getCountry());
         CommonUtils.log("@# PHONE : "+ phone);
         mUserModel.setPhone(phone);
+
+        LoadingDialog loadingDialog = new LoadingDialog();
+        SecondUtils utils = new SecondUtils();
 
     }
 
